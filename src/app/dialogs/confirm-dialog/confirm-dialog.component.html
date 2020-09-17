@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Cool!</h1>
+<div mat-dialog-content>
+  <p>Hiermit bestätigst du, dass du einen Dauerauftrag in höhe von </p>
+  <p>{{data}}&euro;</p>
+  <p>ausführen wirst!</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Zurück</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>JA!</button>
+</div>

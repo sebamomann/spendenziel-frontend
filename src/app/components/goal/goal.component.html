@@ -1,0 +1,14 @@
+<div class="bar">
+  <span>80%</span>
+</div>
+<ng-container *ngIf="_goal$ | async let __goal">
+  <div class="donation-wrapper">
+    <div *ngFor="let donation of goal.donations"
+         [ngClass]="{'done': donation.done }"
+         (click)="done(donation)"
+         class="donation-block">
+      <span class="amount">{{donation.amount}}</span>
+      <span class="currency">&euro;</span>
+    </div>
+  </div>
+</ng-container>

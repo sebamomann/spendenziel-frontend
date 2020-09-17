@@ -13,6 +13,7 @@ import {DonationService} from '../../services/donation.service';
 export class GoalComponent implements OnInit {
   public _goal$: Observable<any>;
   public goal: any;
+  percent: any;
 
   constructor(private goalService: GoalService, private donationService: DonationService,
               private dialog: MatDialog, private snackBar: MatSnackBar) {
@@ -34,6 +35,8 @@ export class GoalComponent implements OnInit {
 
           return 0;
         });
+
+      this.calcPercent();
     });
   }
 
@@ -51,6 +54,7 @@ export class GoalComponent implements OnInit {
                 if (mDonation.id === donation.id) {
                   mDonation.done = true;
                   this.snackBar.open('Cool!');
+                  this.calcPercent();
                 }
               });
             }, error => {
@@ -59,5 +63,22 @@ export class GoalComponent implements OnInit {
         }
       });
     }
+  }
+
+  private calcPercent() {
+    let val = 0;
+
+    this.goal.donations.forEach((fDonation) => {
+      if (fDonation.done === true) {
+        val += fDonation.amount;
+      }
+    });
+
+    console.log(val);
+    console.log(this.goal.total);
+
+    this.percent = +((val / this.goal.total) * 100);
+
+    console.log(this.percent);
   }
 }

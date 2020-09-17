@@ -1,5 +1,5 @@
-<div class="bar">
-  <span>80%</span>
+<div class="bar" [style.height.vh]="percent">
+  <span class="percent">{{percent}}%</span>
 </div>
 <ng-container *ngIf="_goal$ | async let __goal">
   <div class="donation-wrapper">

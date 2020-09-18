@@ -74,11 +74,6 @@ export class GoalComponent implements OnInit {
       }
     });
 
-    console.log(val);
-    console.log(this.goal.total);
-
-    this.percent = +((val / this.goal.total) * 100);
-
-    console.log(this.percent);
+    this.percent = Math.round((val / this.goal.total) * 100);
   }
 }
